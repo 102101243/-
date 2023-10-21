@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这是一个计算器</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .myDiv{
+
+            justify-content: center;
+            align-items: center;
+            float: left;
+            height: 500px;
+            width: 36%;
+            background-color: dodgerblue;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .button{
+            position: relative;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            top: 15px;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 70px;
+            height: 60px;
+            margin: 8px;
+            font-size: 20px;
+            left: 40px;
+
+
+        }
+        .button1 {
+          background-color: white;
+          color: black;
+          border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+          background-color: #4CAF50;
+          color: white;
+        }
+        input[type="text"] {
+            width: 30vw; /* 设置文本框宽度为200像素 */
+             /* 设置文本框高度为50像素 */
+            opacity: 0.5;
+
+        }
+        input[type="number"]{
+            width: 150px;
+        }
+
+        .textbox {
+            position: relative;
+            top: 5%;
+            height: 40px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+        }
+        .memText{
+            position: relative;
+            top: 4%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 30px;
+            font-size: 30px;
+
+        }
+        button {
+            text-align: center;
+        }
+
+        .hisTable{
+
+            border-collapse:collapse;
+        }
+        .myDiv2{
+            float: left;
+            width: 30%;
+            height: 500px;
+            background-color: bisque;
+            border-radius: 40px;
+        }
+        .myDiv3{
+            position: relative;
+            float: left;
+            width: 25%;
+            height: 700px;
+            background-color: aqua;
+            border-radius: 40px;
+            padding: 20px;
+        }
+        table,th,td
+        {
+            margin: 20px;
+            border:1px solid orange;
+            width: 300px;
+            height: 30px;
+        }
+        .mtd{
+            border-radius: 20px;
+            background-color: deepskyblue;
+            width: 50px;
+            height: 35px;
+        }
+        .cl{
+            border-radius: 20px;
+            background-color: orange;
+            width: 50px;
+            height: 35px;
+        }
+        .cx{
+            border-radius: 20px;
+            background-color: orange;
+            width: 70px;
+            height: 35px;
+        }
+
+
+
+    </style>
+    <script>
+        function clearText(){
+            var input = document.getElementById("myInput");
+            input.value = null
+            input = document.getElementById('ansText');
+            input.value = null
+        }
+        function backText(){
+            var input = document.getElementById("myInput");
+            input.value = input.value.substring(0,input.value.length-1);
+        }
+        function getButtonText(bName) {
+            var button = document.getElementById(bName);
+            var input = document.getElementById("myInput");
+            input.value = input.value += button.innerHTML;
+        }
+
+
+
+    </script>
+</head>
+<body>
+
+    <div id="result"></div>
+    <h1>计算器</h1>
+
+    <div class="myDiv" title="计算器">
+        <input type="text" class="textbox" id="myInput"  readonly>
+        <input type="text" class="memText" id="ansText" readonly>
+
+
+        <button class="button" id="myButton1" onclick="getButtonText(id)">1</button>
+        <button class="button" id="myButton2" onclick="getButtonText(id)" >2</button>
+        <button class="button" id="myButton3" onclick="getButtonText(id)" >3</button>
+        <button class="button" id="myButton+" onclick="getButtonText(id)" >+</button>
+        <button class="button" id="myButton-" onclick="getButtonText(id)" >-</button>
+
+        <button class="button" id="myButton4" onclick="getButtonText(id)">4</button>
+        <button class="button" id="myButton5" onclick="getButtonText(id)" >5</button>
+        <button class="button" id="myButton6" onclick="getButtonText(id)" >6</button>
+        <button class="button" id="myButton*" onclick="getButtonText(id)" >*</button>
+        <button class="button" id="myButton/" onclick="getButtonText(id)">/</button>
+
+        <button class="button" id="myButton7" onclick="getButtonText(id)">7</button>
+        <button class="button" id="myButton8" onclick="getButtonText(id)">8</button>
+        <button class="button" id="myButton9" onclick="getButtonText(id)">9</button>
+        <button class="button" id="myButton**" onclick="getButtonText(id)">**</button>
+        <button class="button button1" id="myButtonC" onclick="clearText()">C</button>
+        <button class="button" id="myButton." onclick="getButtonText(id)">.</button>
+        <button class="button" id="myButton0" onclick="getButtonText(id)">0</button>
+        <button class="button" id="send-request" onclick="getData()"> = </button>
+        <button class="button" id="myButton(" onclick="getButtonText(id)">(</button>
+        <button class="button" id="myButton)" onclick="getButtonText(id)">)</button>
+        <button class="button" id="myBack" onclick="backText()">Back</button>
+        <button class="button" id="myAns" onclick="dataAns()">ans</button>
+        <button class="button" id="myButtonSin" onclick="getButtonText(id)">sin</button>
+        <button class="button" id="myButtonCos" onclick="getButtonText(id)">cos</button>
+        <button class="button" id="myButtonTan" onclick="getButtonText(id)">tan</button>
+
+
+
+
+    </div>
+    <div class="myDiv2" >
+        <div style="padding: 10px">历史记录</div>
+        <button onclick="getHisData()" class="mtd"> GET</button>
+        <button onclick="dataDelete()" class="mtd">Delete</button>
+        <table class="hisTable" >
+            <thead align="center">
+                <tr>
+                    <td>算式
+                    </td>
+                    <td>结果</td>
+                </tr>
+            </thead>
+            <tbody id="hisContent" align="center">
+
+            </tbody>
+
+
+        </table>
+    </div>
+
+
+    <div class="myDiv3">
+        <div>性别:
+		<label><input type="radio" name="way" value="存款">存款</label>
+		<label><input type="radio" name="way" value="贷款">贷款</label>
+	    </div>
+
+        <body>请输入金额</body>
+        <input id="ipmoney" type="number" class="rate">
+        <br>
+        <body>请输入年限</body>
+        <input id="ipyears" type="number" class="time">
+
+        <button onclick="getInterest()" class="cl">确认</button>
+        <br>
+        <body>利息</body>
+        <input id="interest" type="number" style="opacity: 0.6" readonly>
+        <br>
+        <br>
+        <table border="1" align="center">存款利率表:
+            <button onclick="getCurrent()" class="cx">获取表格</button>
+            <thead>
+            <tr>
+                <th>年限
+                </th>
+                <th>利率</th>
+                </tr>
+
+            </thead>
+            <tbody id="current" align="center">
+
+            </tbody>
+        </table>
+        <table border="1" align="center">贷款利率表:
+            <button onclick="getLoan()" class="cx">获取表格</button>
+            <thead>
+            <tr>
+                <th>
+                年限
+                </th>
+                <th>
+                    利率
+                </th>
+            </tr>
+            </thead>
+            <tbody id="loan" align="center">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+<script>
+
+    function dataAns(){
+        $.ajax({
+            url: 'http://localhost:5000/ans',
+            type: 'GET',
+            success: function(response) {
+                document.getElementById("myAns").innerHTML = response['ans']
+
+            },
+            error: function(error) {
+                // Handle any error that occurred during the request
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+
+    function getInterest(){
+
+        var radio = document.getElementsByName("way");
+        for (i=0; i<radio.length; i++) {
+            if (radio[i].checked) {
+                item = radio[i].value
+            }
+        }
+
+        if (item =='贷款'){
+            add = 'http://localhost:5000/intloan'
+            }else{
+            add = 'http://localhost:5000/intcurrent'
+            }
+        var ipm = document.getElementById('ipmoney').value;
+        var ipy = document.getElementById('ipyears').value;
+        var data = {'money': ipm, 'years': ipy};
+        $.ajax({
+
+            url: add,
+            type: 'POST',
+            data:JSON.stringify(data),
+            contentType:'application/json',
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Data sent successfully:', response);
+                document.getElementById('interest').value = response['interest']
+
+
+            },
+            error: function(error) {
+                // Handle any error that occurred during the request
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+
+    function getData(){
+        var iput = document.getElementById('myInput')
+        var inputData = iput.value;
+        var ansData = document.getElementById('ansText');
+        var data = {'data': inputData};
+        $.ajax({
+            url: 'http://localhost:5000/data',
+            type: 'POST',
+            data:JSON.stringify(data),
+            contentType:'application/json',
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Data sent successfully:', response);
+                ansData.value = response['result']
+            },
+            error: function(error) {
+                // Handle any error that occurred during the request
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+
+    function getHisData(){
+
+        $.ajax({
+            url: 'http://localhost:5000/hisData',
+            type: 'GET',
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Data sent successfully:', response);
+
+                datas = response.datas
+                var htmlStr = "";
+                for(var i = 0;i < datas.length;i++){
+                    data = datas[i];
+                    htmlStr += "<tr>";
+                    htmlStr += "<td>" + data.equation + "</td>";
+                    htmlStr += "<td>" + data.result + "</td>";
+                    htmlStr += "</tr>";
+                }
+                document.getElementById('hisContent').innerHTML = htmlStr;
+
+
+            },
+            error: function(error) {
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+    function dataDelete(){
+        $.ajax({
+            url: 'http://localhost:5000/delete',
+            type: 'GET',
+            success: function(response) {
+                document.getElementById("hisContent").innerHTML = ''
+                console.log(response['data'])
+            },
+            error: function(error) {
+                // Handle any error that occurred during the request
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+    function getCurrent(){
+
+        $.ajax({
+            url: 'http://localhost:5000/current',
+            type: 'GET',
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Data sent successfully:', response);
+
+                datas = response.datas
+                var htmlStr = "";
+                for(var i = 0;i < datas.length;i++){
+                    data = datas[i];
+                    htmlStr += "<tr>";
+                    htmlStr += "<td>" + data.current + "</td>";
+                    htmlStr += "<td>" + data.rate + "</td>";
+                    htmlStr += "</tr>";
+                }
+                document.getElementById('current').innerHTML = htmlStr;
+
+
+            },
+            error: function(error) {
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+    function getLoan(){
+
+        $.ajax({
+            url: 'http://localhost:5000/loan',
+            type: 'GET',
+            success: function(response){
+                // Handle the response from the server
+                console.log('Data sent successfully:', response);
+
+                datas = response.datas
+                var htmlStr = "";
+                for(var i = 0;i < datas.length;i++){
+                    data = datas[i];
+                    htmlStr += "<tr>";
+                    htmlStr += "<td>" + data.timeLimit + "</td>";
+                    htmlStr += "<td>" + data.rate + "</td>";
+                    htmlStr += "</tr>";
+                }
+                document.getElementById('loan').innerHTML = htmlStr;
+
+
+            },
+            error: function(error) {
+                console.error('Error sending data:', error);
+            }
+        });
+    }
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
